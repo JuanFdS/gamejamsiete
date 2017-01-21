@@ -17,43 +17,27 @@ public class Pulpito : MonoBehaviour
     {
         if (stepping)
         {
-            stepTime = Mathf.Clamp01(stepTime + verticalSpeed * Time.deltaTime);
-            transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime);
+            Step();
+        } else {
+          lastPosition = transform.position;
+          stepTime = 0;
 
-            if (stepTime >= 1)
-            {
-                stepping = false;
-            }
-
-            return;
+          MoveVerticallyBasedOnInput();
         }
+    }
 
-        lastPosition = transform.position;
-        stepTime = 0;
+    public void MoveVerticallyBasedOnInput(){
+      if (Input.GetButton("Red"))
+      {
+          nextPosition = new Vector3(lastPosition.x, GlobalConfig.Instance.Line("Red").y, 0);
+          stepping = true;
+      }
 
-        if (Input.GetButton("Red"))
-        {
-            if (transform.position.y <= GlobalConfig.Instance.lines[6])
-            {
-                return;
-            }
-
-            currentLine++;
-            nextPosition = new Vector3(lastPosition.x, GlobalConfig.Instance.lines[currentLine], 0);
-            stepping = true;
-        }
-
-        if (Input.GetButton("Blue"))
-        {
-            if (transform.position.y >= GlobalConfig.Instance.lines[0])
-            {
-                return;
-            }
-
-            currentLine--;
-            nextPosition = new Vector3(lastPosition.x, GlobalConfig.Instance.lines[currentLine], 0);
-            stepping = true;
-        }
+      if (Input.GetButton("Blue"))
+      {
+          nextPosition = new Vector3(lastPosition.x, GlobalConfig.Instance.Line("Blue").y, 0);
+          stepping = true;
+      }
     }
 
     public void MoveHorizontally()
@@ -85,5 +69,12 @@ public class Pulpito : MonoBehaviour
 
   public float DistanceTraveledInFrame(){
     return horizontalSpeed * Time.deltaTime;
+  }
+
+  public void Step(){
+    stepTime = Mathf.Clamp01(stepTime + verticalSpeed * Time.deltaTime);
+    transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime);
+
+    stepping = stepTime < 1;
   }
 }

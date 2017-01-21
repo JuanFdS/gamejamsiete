@@ -225,6 +225,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4736169891842976, guid: 02d06d35667bb4ea4a9014664d141123, type: 2}
       propertyPath: m_LocalPosition.x
       value: 22.670044
@@ -256,6 +261,111 @@ Prefab:
     - target: {fileID: 4736169891842976, guid: 02d06d35667bb4ea4a9014664d141123, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[0].color
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[0].line
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[1].color
+      value: Purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[2].color
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[3].color
+      value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[4].color
+      value: Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[5].color
+      value: White
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[6].color
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[1].line
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[2].line
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[4].line
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[5].line
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[6].line
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[0].line.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[1].line.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[2].line.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[4].line.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[5].line.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[6].line.y
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[3].line.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084682135880678, guid: 02d06d35667bb4ea4a9014664d141123,
+        type: 2}
+      propertyPath: colorsToLines.Array.data[5].line.z
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 02d06d35667bb4ea4a9014664d141123, type: 2}

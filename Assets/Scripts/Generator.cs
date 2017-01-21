@@ -49,7 +49,7 @@ public class Generator : MonoBehaviour {
 
 	Vector3 GetNextPosition(){
 		var xPosition = PlayerPosition().x + xOffset;
-		var yPosition = Random.Range(minY, maxY);
+		var yPosition = GlobalConfig.Instance.RandomLine().y;
 		return new Vector3(xPosition, yPosition, PlayerPosition().z);
 	}
 
