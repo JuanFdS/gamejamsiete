@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4945440980183436}
   - component: {fileID: 212034014607146468}
-  - component: {fileID: 61775255237440484}
-  - component: {fileID: 114421563820537482}
+  - component: {fileID: 114833232229930298}
+  - component: {fileID: 65551887091972996}
   m_Layer: 0
   m_Name: Obstaculo
   m_TagString: Obstacle
@@ -42,21 +42,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61775255237440484
-BoxCollider2D:
+--- !u!65 &65551887091972996
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1845589918531354}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
---- !u!114 &114421563820537482
+  m_Size: {x: 0.16, y: 0.16, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114833232229930298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -64,7 +62,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845589918531354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1667ae0d6b0bb4f3da7b7b641d79ecaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eba83c6faaa04beaa9f8544fa7dd8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212034014607146468

@@ -18,27 +18,27 @@ public class Pulpito : MonoBehaviour
 	bool red = false;
 	bool blue = false;
 	bool yellow = false;
-	float lastYExtraPos = 0;
+
+	public Material trailMaterial;
+
+	private Color goingColor;
+	public Color actualColor;
+
     public void MoveVertically()
     {
-		if (stepping) {
 			Step ();
-		}
-		if(!stepping){
-			
 			lastPosition = transform.position;
 			stepTime = 0;
 
 			MoveVerticallyBasedOnInput ();
-		}
     }
 
     public void MoveVerticallyBasedOnInput(){
 		var estoEsReCabeza = 0;
 
-		if(Input.GetButtonDown ("Red")) red = true;
-		if(Input.GetButtonDown ("Blue")) blue = true;
-		if(Input.GetButtonDown ("Yellow")) yellow = true;
+		if(Input.GetButton ("Red")) red = true;
+		if(Input.GetButton ("Blue")) blue = true;
+		if(Input.GetButton ("Yellow")) yellow = true;
 
 		if (timeOfFirstKey == 0) {
 			if(red || blue || yellow)
@@ -52,7 +52,10 @@ public class Pulpito : MonoBehaviour
 			if (yellow)
 				estoEsReCabeza += 4;
 
-			var line = GlobalConfig.Instance.Line (estoEsReCabeza);
+			var colorToLines = GlobalConfig.Instance.Line (estoEsReCabeza);
+			var line = colorToLines.line;
+
+			goingColor = colorToLines.realColor;
 
 			nextPosition = new Vector3 (lastPosition.x, line.y, line.z);
 
@@ -82,14 +85,11 @@ public class Pulpito : MonoBehaviour
 
 	public void FixedUpdate(){
 		Move();
-		if (!stepping) {
-			var ypos = Mathf.Sin (3 * Time.time) / 1.5f;
-			transform.position += new Vector3 (0, ypos - lastYExtraPos, 0);
-			lastYExtraPos = ypos;
-		}
+		var ypos = Mathf.Sin (3 * Time.time) / 1.5f;
+		transform.position += new Vector3 (0, ypos, 0);
 	}
 
-  void OnTriggerEnter2D(Collider2D collisioner){
+  void OnTriggerEnter(Collider collisioner){
     switch(collisioner.gameObject.tag){
       case "Obstacle": {
         Debug.Log("Colisionó");
@@ -103,12 +103,14 @@ public class Pulpito : MonoBehaviour
   }
 
   public void Step(){
-    stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
-		transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime);
-
+    stepTime += verticalSpeed * Time.deltaTime;
+		transform.position = Vector3.Lerp (lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
+		var color = Color.Lerp(actualColor, goingColor,  stepTime);
+		trailMaterial.color = color;
+		actualColor = color;
     stepping = stepTime < 1;
 		if (!stepping) {
 			Debug.Log ("Llegue");
 		}
-  }
+  	}
 }

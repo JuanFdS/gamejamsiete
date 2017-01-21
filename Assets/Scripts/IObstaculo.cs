@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IObstaculo : MonoBehaviour {
+abstract public class IObstaculo : MonoBehaviour {
 
+	abstract public void Initialize ();
+	abstract public void BeAffectedBy (EffectArea specialPower);
 	// Use this for initialization
 	void Start () {
 		

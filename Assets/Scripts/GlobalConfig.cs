@@ -12,6 +12,7 @@ public class GlobalConfig : MonoBehaviour
       public string color;
 	  public Line line;
 	  public int encodedValue;
+	  public Color realColor;
     }
 
     public List<ColorsToLines> colorsToLines;
@@ -34,8 +35,8 @@ public class GlobalConfig : MonoBehaviour
 		return colorsToLines.Select (colorToLine => colorToLine.color).ToList();
 	}
 		
-	public Line Line(int encodedValue){
-		return colorsToLines.Find(colorToLine => colorToLine.encodedValue == encodedValue).line;
+	public ColorsToLines Line(int encodedValue){
+		return colorsToLines.Find(colorToLine => colorToLine.encodedValue == encodedValue);
 	}
 	public Line Line(string color){
     	return colorsToLines.Find(colorToLine => colorToLine.color == color).line;

@@ -44,6 +44,7 @@ public class Generator : MonoBehaviour {
 		var obstaculo = GetNextObstacle();
 		var posicion = GetNextPosition();
 		var instanciaObstaculo = Instantiate(obstaculo, posicion, Quaternion.identity);
+		instanciaObstaculo.GetComponent<IObstaculo> ().Initialize ();
 		Destroy(instanciaObstaculo, lifeTime);
 	}
 
@@ -54,7 +55,7 @@ public class Generator : MonoBehaviour {
 	}
 
 	GameObject GetNextObstacle(){
-		var obstaculosInstaciables = obstaculos.Select (Obstaculo => Obstaculo.gameObject).ToList();
-		return obstaculosInstaciables[Random.Range(0, obstaculosInstaciables.Count)];
+		var obstaculo = obstaculos.ToList () [Random.Range (0, obstaculos.Count)];
+		return obstaculo.gameObject;
 	}
 }
