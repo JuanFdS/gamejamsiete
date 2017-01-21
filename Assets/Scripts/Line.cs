@@ -7,4 +7,5 @@ using System;
 public class Line {
 	public float y;
 	public float z;
+    public float frequency;
 }

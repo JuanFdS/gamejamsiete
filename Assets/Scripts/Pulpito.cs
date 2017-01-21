@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class Pulpito : MonoBehaviour
 {
-
     public float horizontalSpeed;
     public float verticalSpeed;
 
@@ -35,12 +34,11 @@ public class Pulpito : MonoBehaviour
     private Line goinglLine;
     private float previousPitch;
     private AudioSource audio;
-	public ParticleSystem particulas;
 	public bool enLinea = true;
 
     public void Start(){
 		goingColor = actualColor;
-        goinglLine = GlobalConfig.Instance.Line(1).line;
+        goinglLine = GlobalConfig.Instance.Line(2).line;
         previousPitch = converToTone(goinglLine.y);
         audio = GetComponent<AudioSource>();
     }
@@ -88,27 +86,32 @@ public class Pulpito : MonoBehaviour
                 lastLine = estoEsReCabeza;
             }
 
-            var colorToLines = GlobalConfig.Instance.Line(estoEsReCabeza);
-			if (Vector4.Distance (colorToLines.realColor, actualColor) > 0.1f) {
-				goinglLine = colorToLines.line;
-				goingColor = colorToLines.realColor;
+            GoToNewLine(estoEsReCabeza);
 
-				particulas.startColor = goingColor;
-
-				nextPosition = new Vector3 (lastPosition.x, goinglLine.y, goinglLine.z);
-				enLinea = false;
-				stepping = true;
-
-			}
-
-           
-
-
-			red = false;
+            red = false;
 			yellow = false;
 			blue = false;
 			timeOfFirstKey = 0;
 		}
+
+        if (coolDown == 0)
+        {
+            GoToNewLine(lastLine);
+        }
+    }
+
+    private void GoToNewLine(int estoEsReCabeza)
+    {
+        var colorToLines = GlobalConfig.Instance.Line(estoEsReCabeza);
+        if (Vector4.Distance(colorToLines.realColor, actualColor) > 0.1f)
+        {
+            goinglLine = colorToLines.line;
+            goingColor = colorToLines.realColor;
+
+            nextPosition = new Vector3(lastPosition.x, goinglLine.y, goinglLine.z);
+            enLinea = false;
+            stepping = true;
+        }
     }
 
     public void MoveHorizontally()
@@ -129,7 +132,7 @@ public class Pulpito : MonoBehaviour
     {
         Move();
 
-        var ypos = Mathf.Sin((goinglLine.y / 2 + 8) * Time.time) / 2.5f;
+        var ypos = Mathf.Sin(goinglLine.frequency * Time.time) / 2.5f;
         var pitch = Mathf.Lerp(previousPitch, converToTone(goinglLine.y), 0.05f);
         audio.pitch = pitch;
         previousPitch = pitch;
