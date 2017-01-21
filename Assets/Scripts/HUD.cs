@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
@@ -20,9 +21,14 @@ public class HUD : MonoBehaviour
 
 	void Update ()
 	{
-	    counter.text = (player.transform.position.x / 25).ToString("0.00");
+	    counter.text = GlobalConfig.Instance.Distance.ToString("0.00");
 
 	    powerUpBar.rectTransform.sizeDelta = new Vector2(player.coolDown, powerUpBar.rectTransform.rect.height);
 	    powerUpBar.rectTransform.position = new Vector2(originalPowerUpBarPos.x - (100 - player.coolDown), originalPowerUpBarPos.y);
+
+	    if (Input.GetKeyDown(KeyCode.K))
+	    {
+	        SceneManager.LoadScene(2);
+	    }
     }
 }

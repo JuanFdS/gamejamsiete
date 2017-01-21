@@ -102,6 +102,17 @@ public class Pulpito : MonoBehaviour
             timeOfFirstKey = 0;
         }
 
+        if (coolDown == 0)
+        {
+            var colorToLines = GlobalConfig.Instance.Line(lastLine);
+
+            goinglLine = colorToLines.line;
+            goingColor = colorToLines.realColor;
+
+            nextPosition = new Vector3(lastPosition.x, goinglLine.y, goinglLine.z);
+
+            stepping = true;
+        }
     }
 
     public void MoveHorizontally()
@@ -148,6 +159,8 @@ public class Pulpito : MonoBehaviour
         {
             timeToRecharge -= Time.deltaTime;
         }
+
+        GlobalConfig.Instance.Distance = transform.position.x / 25;
     }
 
     void OnTriggerEnter(Collider collisioner)
