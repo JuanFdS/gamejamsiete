@@ -25,18 +25,25 @@ public class Pulpito : MonoBehaviour
 
 	private Color goingColor;
 	public Color actualColor;
-    
-	public void Start(){
+
+    private Line goinglLine;
+    private float previousPitch;
+    private AudioSource audio;
+
+    public void Start(){
 		goingColor = actualColor;
-	}
+        goinglLine = GlobalConfig.Instance.Line(1).line;
+        previousPitch = converToTone(goinglLine.y);
+        audio = GetComponent<AudioSource>();
+    }
 
     public void MoveVertically()
     {
-			Step ();
-			lastPosition = transform.position;
-			stepTime = 0;
+		Step ();
+		lastPosition = transform.position;
+		stepTime = 0;
 
-			MoveVerticallyBasedOnInput ();
+		MoveVerticallyBasedOnInput ();
     }
 
     public void MoveVerticallyBasedOnInput(){
@@ -59,11 +66,11 @@ public class Pulpito : MonoBehaviour
 				estoEsReCabeza += 4;
 
 			var colorToLines = GlobalConfig.Instance.Line (estoEsReCabeza);
-			var line = colorToLines.line;
 
-			goingColor = colorToLines.realColor;
+            goinglLine = colorToLines.line;
+            goingColor = colorToLines.realColor;
 
-			nextPosition = new Vector3 (lastPosition.x, line.y, line.z);
+			nextPosition = new Vector3 (lastPosition.x, goinglLine.y, goinglLine.z);
 
 			stepping = true;
 
@@ -77,9 +84,10 @@ public class Pulpito : MonoBehaviour
 
     public void MoveHorizontally()
     {
-        transform.position += Vector3.right * horizontalSpeed * Time.deltaTime;
-        lastPosition += Vector3.right * horizontalSpeed * Time.deltaTime;
-        nextPosition += Vector3.right * horizontalSpeed * Time.deltaTime;
+        var sum = Vector3.right * horizontalSpeed * Time.deltaTime;
+        transform.position += sum;
+        lastPosition += sum;
+        nextPosition += sum;
     }
 
     public void Move()
@@ -90,8 +98,13 @@ public class Pulpito : MonoBehaviour
 
 	public void FixedUpdate(){
 		Move();
-		var ypos = Mathf.Sin (3 * Time.time) / 1.5f;
-		transform.position += new Vector3 (0, ypos, 0);
+        
+		var ypos = Mathf.Sin((goinglLine.y / 2 + 8) * Time.time) / 1.5f;
+
+        var pitch = Mathf.Lerp(previousPitch, converToTone(goinglLine.y), 0.05f);
+        audio.pitch = pitch;
+	    previousPitch = pitch;
+        transform.position += new Vector3 (0, ypos, 0);
 	}
 
   void OnTriggerEnter(Collider collisioner){
@@ -118,4 +131,9 @@ public class Pulpito : MonoBehaviour
 			Debug.Log ("Llegue");
 		}
   	}
+
+    private float converToTone(float positionY)
+    {
+        return Mathf.Pow(2, positionY/12.0f);
+    }
 }
