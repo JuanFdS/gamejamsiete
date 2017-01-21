@@ -1,64 +1,96 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public class Generator : MonoBehaviour {
+using Random = System.Random;
 
-	public float MetersToGenerateNextObstacle;
+[Serializable]
+public class ObstacleGenerator
+{
+    public IObstaculo obstaculo;
 
-	public Pulpito player;
+    public int spawnPercetange;
+}
 
-	private float nextObstacleInMeters;
 
-	public List<IObstaculo> obstaculos;
+public class Generator : MonoBehaviour
+{
+    [Serializable]
+    public struct Difficulty
+    {
+        public float difficultyIncreaser;
 
-	public int minY;
+        public float metersPerObstacle;
 
-	public int maxY;
+        public float minMetersPerObstacle;
+    }
 
-	public int xOffset;
+    public Difficulty difficulty;
 
-	public int lifeTime;
+    public Pulpito player;
 
-	Vector3 PlayerPosition(){
-			return player.transform.position;
-	}
+    public List<ObstacleGenerator> obstaculos;
 
-	void Start () {
-		nextObstacleInMeters = MetersToGenerateNextObstacle;
-	}
+    private int totalWeight;
 
-	void Update () {
-		nextObstacleInMeters -= player.DistanceTraveledInFrame();
-		if(nextObstacleInMeters <= 0){
-			SpawnObstacle();
-			ResetNextObstacleInMeters();
-		}
-	}
+    public int minY;
 
-	void ResetNextObstacleInMeters(){
-		nextObstacleInMeters = MetersToGenerateNextObstacle;
-	}
+    public int maxY;
 
-	void SpawnObstacle(){
-		var obstaculo = GetNextObstacle();
-		var linea = GetNextLine();
-		var instanciaObstaculo = Instantiate(obstaculo, GetNextPosition(), Quaternion.identity);
-		instanciaObstaculo.GetComponent<IObstaculo> ().Initialize (linea);
-		Destroy(instanciaObstaculo, lifeTime);
-	}
+    public int offsetX;
 
-	Vector3 GetNextPosition(){
-		var xPosition = PlayerPosition().x + xOffset;
-		return new Vector3(xPosition, 0, 0);
-	}
+    public int lifeTime;
 
-	GlobalConfig.ColorsToLines GetNextLine(){
-		return GlobalConfig.Instance.RandomColorToNon3DLine ();
-	}
+    private float distanceTravelled;
 
-	GameObject GetNextObstacle(){
-		var obstaculo = obstaculos.ToList () [Random.Range (0, obstaculos.Count)];
-		return obstaculo.gameObject;
-	}
+    void Start()
+    {
+        obstaculos = obstaculos.OrderByDescending(x => x.spawnPercetange).ToList();
+        totalWeight = obstaculos.Sum(x => x.spawnPercetange);
+    }
+
+    void Update()
+    {
+        distanceTravelled += player.DistanceTraveledInFrame();
+        Debug.Log(distanceTravelled);
+        if (distanceTravelled > difficulty.metersPerObstacle)
+        {
+            SpawnObstacle();
+            difficulty.metersPerObstacle = difficulty.metersPerObstacle < difficulty.minMetersPerObstacle
+                ? difficulty.minMetersPerObstacle
+                : difficulty.metersPerObstacle - difficulty.difficultyIncreaser;
+            distanceTravelled = 0;
+        }
+    }
+
+    private void SpawnObstacle()
+    {
+        var obstacle = Instantiate(GetNextObstacle(), GetNextPosition(), Quaternion.identity);
+        obstacle.GetComponent<IObstaculo>().Initialize(GetNextLine());
+        Destroy(obstacle, lifeTime);
+    }
+
+    private Vector3 GetNextPosition()
+    {
+        var xPosition = player.transform.position.x + offsetX;
+        return new Vector3(xPosition, 0, 0);
+    }
+
+    private GlobalConfig.ColorsToLines GetNextLine()
+    {
+        return GlobalConfig.Instance.RandomColorToNon3DLine();
+    }
+
+    private GameObject GetNextObstacle()
+    {
+        var rnd = new Random().Next(0, totalWeight);
+        foreach (var item in obstaculos)
+        {
+            if (rnd < item.spawnPercetange)
+                return item.obstaculo.gameObject;
+            rnd -= item.spawnPercetange;
+        }
+        return obstaculos.Last().obstaculo.gameObject;
+    }
 }

@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4173908454657686}
   - component: {fileID: 212777122499938038}
   - component: {fileID: 65764677660257146}
-  - component: {fileID: 114548024528549242}
+  - component: {fileID: 114046857300333780}
   m_Layer: 0
-  m_Name: Obstaculo 2
+  m_Name: Obstaculo 3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114548024528549242
+--- !u!114 &114046857300333780
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1970576628586898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 101ec68c4682742f08f26c27e99340dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 21178272b5fb5cd4a938bba488011eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212777122499938038

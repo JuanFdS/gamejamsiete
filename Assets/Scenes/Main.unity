@@ -775,6 +775,8 @@ MonoBehaviour:
   horizontalSpeed: 10
   verticalSpeed: 3
   currentLine: 3
+  coolDown: 100
+  timeToRecharge: 0.5
   maxTimeToPressKeys: 0.025
   trailMaterial: {fileID: 2100000, guid: 9cfb5fe2aa57e8549924f580802d91b4, type: 2}
   actualColor: {r: 0.034482475, g: 0, b: 1, a: 0}
@@ -933,6 +935,26 @@ Prefab:
       value: 
       objectReference: {fileID: 114478944027742528, guid: 68cae2d00ad774ff8b78fb832c4b9263,
         type: 2}
+    - target: {fileID: 114548761424958278, guid: e4944367f62e340e180c208e12a84987,
+        type: 2}
+      propertyPath: lifeTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114548761424958278, guid: e4944367f62e340e180c208e12a84987,
+        type: 2}
+      propertyPath: offsetX
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114548761424958278, guid: e4944367f62e340e180c208e12a84987,
+        type: 2}
+      propertyPath: metersPerObstacle
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114548761424958278, guid: e4944367f62e340e180c208e12a84987,
+        type: 2}
+      propertyPath: difficultyIncreaser
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4944367f62e340e180c208e12a84987, type: 2}
   m_IsPrefabParent: 0
