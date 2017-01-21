@@ -132,4 +132,9 @@ public class Pulpito : MonoBehaviour
 			Debug.Log ("Llegue");
 		}
   	}
+
+    private float converToTone(float positionY)
+    {
+        return Mathf.Pow(2, positionY / 12.0f);
+    }
 }
