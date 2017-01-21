@@ -13,7 +13,7 @@ public class Pulpito : MonoBehaviour
     private float stepTime;
     private bool stepping;
 
-	private float timeSinceFirstKey = 0;
+	private float timeOfFirstKey=0;
 	bool red = false;
 	bool blue = false;
 	bool yellow = false;
@@ -34,9 +34,12 @@ public class Pulpito : MonoBehaviour
     public void MoveVerticallyBasedOnInput(){
 		var estoEsReCabeza = 0;
 
-		if (Input.GetButtonDown("Red")){ red = true; //estoEsReCabeza += 1; };
-		if (Input.GetButtonDown("Blue")){ blue=true;//estoEsReCabeza += 2; };
-		if (Input.GetButtonDown("Yellow")){ yellow = true;//estoEsReCabeza += 4; };
+		red = Input.GetButtonDown ("Red");
+		blue = Input.GetButtonDown ("Blue");
+		yellow = Input.GetButtonDown ("Yellow");
+		if (Input.GetButtonDown("Red")){ red = true; estoEsReCabeza += 1; };
+		if (Input.GetButtonDown("Blue")){ blue= true; estoEsReCabeza += 2; };
+		if (Input.GetButtonDown("Yellow")){ yellow = true; estoEsReCabeza += 4; };
 	  
 		if (estoEsReCabeza != 0) {
 			var line = GlobalConfig.Instance.Line (estoEsReCabeza);
