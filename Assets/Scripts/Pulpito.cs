@@ -4,11 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class Pulpito : MonoBehaviour
 {
-
     public float horizontalSpeed;
     public float verticalSpeed;
 
-    public int currentLine = 2;
+    public int currentLine = 3;
 
     public float coolDown = 100;
     public float timeToRecharge = 0.5f;
@@ -33,12 +32,12 @@ public class Pulpito : MonoBehaviour
     public Color actualColor;
 
     private Line goinglLine;
-    private float previousPitch = 1;
+    private float previousPitch;
     private AudioSource audio;
+	public bool enLinea = true;
 
-    public void Start()
-    {
-        goingColor = actualColor;
+    public void Start(){
+		goingColor = actualColor;
         goinglLine = GlobalConfig.Instance.Line(2).line;
         previousPitch = converToTone(goinglLine.y);
         audio = GetComponent<AudioSource>();
@@ -87,30 +86,30 @@ public class Pulpito : MonoBehaviour
                 lastLine = estoEsReCabeza;
             }
 
-            var colorToLines = GlobalConfig.Instance.Line(estoEsReCabeza);
-
-            goinglLine = colorToLines.line;
-            goingColor = colorToLines.realColor;
-
-            nextPosition = new Vector3(lastPosition.x, goinglLine.y, goinglLine.z);
-
-            stepping = true;
+            GoToNewLine(estoEsReCabeza);
 
             red = false;
-            yellow = false;
-            blue = false;
-            timeOfFirstKey = 0;
-        }
+			yellow = false;
+			blue = false;
+			timeOfFirstKey = 0;
+		}
 
         if (coolDown == 0)
         {
-            var colorToLines = GlobalConfig.Instance.Line(lastLine);
+            GoToNewLine(lastLine);
+        }
+    }
 
+    private void GoToNewLine(int estoEsReCabeza)
+    {
+        var colorToLines = GlobalConfig.Instance.Line(estoEsReCabeza);
+        if (Vector4.Distance(colorToLines.realColor, actualColor) > 0.1f)
+        {
             goinglLine = colorToLines.line;
             goingColor = colorToLines.realColor;
 
             nextPosition = new Vector3(lastPosition.x, goinglLine.y, goinglLine.z);
-
+            enLinea = false;
             stepping = true;
         }
     }
@@ -180,17 +179,19 @@ public class Pulpito : MonoBehaviour
         return horizontalSpeed * Time.deltaTime;
     }
 
-    public void Step()
-    {
+    public void Step(){
         stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
-        transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
-        var color = Color.Lerp(actualColor, goingColor, stepTime);
+        transform.position = Vector3.Lerp (lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
+        var color = Color.Lerp(actualColor, goingColor,  stepTime);
         trailMaterial.color = color;
         actualColor = color;
-        stepping = stepTime < 1;
-        if (!stepping)
-        {
-            Debug.Log("Llegue");
+    stepping = stepTime < 1;
+        if (Vector4.Distance (goingColor, actualColor) < 0.1f && !enLinea) {
+            //entered a line
+            enLinea = true;
+        }
+        if (!stepping) {
+            
         }
     }
 
