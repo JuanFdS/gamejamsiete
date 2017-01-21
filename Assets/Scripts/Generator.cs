@@ -4,11 +4,11 @@ using UnityEngine;
 using System.Linq;
 public class Generator : MonoBehaviour {
 
-	const float MetersToGenerateNextObstacle = 5;
+	public float MetersToGenerateNextObstacle;
 
 	public Pulpito player;
 
-	public float nextObstacleInMeters;
+	private float nextObstacleInMeters;
 
 	public List<IObstaculo> obstaculos;
 
@@ -25,7 +25,7 @@ public class Generator : MonoBehaviour {
 	}
 
 	void Start () {
-
+		nextObstacleInMeters = MetersToGenerateNextObstacle;
 	}
 
 	void Update () {

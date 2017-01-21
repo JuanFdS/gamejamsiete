@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pulpito : MonoBehaviour
 {
+
     public float horizontalSpeed;
     public float verticalSpeed;
 
@@ -24,8 +25,20 @@ public class Pulpito : MonoBehaviour
 
     public Material trailMaterial;
 
-    private Color goingColor;
-    public Color actualColor;
+    
+	private Color goingColor;
+	public Color actualColor;
+
+    private Line goinglLine;
+    private float previousPitch;
+    private AudioSource audio;
+
+    public void Start(){
+		goingColor = actualColor;
+        goinglLine = GlobalConfig.Instance.Line(1).line;
+        previousPitch = converToTone(goinglLine.y);
+        audio = GetComponent<AudioSource>();
+    }
 
     private int lastLine = 2;
 
@@ -36,11 +49,11 @@ public class Pulpito : MonoBehaviour
 
     public void MoveVertically()
     {
-        Step();
-        lastPosition = transform.position;
-        stepTime = 0;
+		Step ();
+		lastPosition = transform.position;
+		stepTime = 0;
 
-        MoveVerticallyBasedOnInput();
+		MoveVerticallyBasedOnInput ();
     }
 
     public void MoveVerticallyBasedOnInput()
@@ -78,10 +91,10 @@ public class Pulpito : MonoBehaviour
                     lastLine = estoEsReCabeza;
                 }
 
-                var colorToLines = GlobalConfig.Instance.Line(estoEsReCabeza);
-                var line = colorToLines.line;
+            goinglLine = colorToLines.line;
+            goingColor = colorToLines.realColor;
 
-                goingColor = colorToLines.realColor;
+			nextPosition = new Vector3 (lastPosition.x, goinglLine.y, goinglLine.z);
 
                 nextPosition = new Vector3(lastPosition.x, line.y, line.z);
 
@@ -109,9 +122,10 @@ public class Pulpito : MonoBehaviour
 
     public void MoveHorizontally()
     {
-        transform.position += Vector3.right * horizontalSpeed * Time.deltaTime;
-        lastPosition += Vector3.right * horizontalSpeed * Time.deltaTime;
-        nextPosition += Vector3.right * horizontalSpeed * Time.deltaTime;
+        var sum = Vector3.right * horizontalSpeed * Time.deltaTime;
+        transform.position += sum;
+        lastPosition += sum;
+        nextPosition += sum;
     }
 
     public void Move()
@@ -120,12 +134,15 @@ public class Pulpito : MonoBehaviour
         MoveHorizontally();
     }
 
-    public void FixedUpdate()
-    {
-        Move();
-        var ypos = Mathf.Sin(3 * Time.time) / 1.5f;
-        transform.position += new Vector3(0, ypos, 0);
-    }
+	public void FixedUpdate(){
+		Move();
+        
+		var ypos = Mathf.Sin((goinglLine.y / 2 + 8) * Time.time) / 2.5f;
+        var pitch = Mathf.Lerp(previousPitch, converToTone(goinglLine.y), 0.05f);
+        audio.pitch = pitch;
+	    previousPitch = pitch;
+        transform.position += new Vector3 (0, ypos, 0);
+	}
 
     public void Update()
     {
@@ -160,22 +177,20 @@ public class Pulpito : MonoBehaviour
         }
     }
 
-    public float DistanceTraveledInFrame()
-    {
-        return horizontalSpeed * Time.deltaTime;
-    }
+  public void Step(){
+		stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
+		transform.position = Vector3.Lerp (lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
+		var color = Color.Lerp(actualColor, goingColor,  stepTime);
+		trailMaterial.color = color;
+		actualColor = color;
+    stepping = stepTime < 1;
+		if (!stepping) {
+			Debug.Log ("Llegue");
+		}
+  	}
 
-    public void Step()
+    private float converToTone(float positionY)
     {
-        stepTime += verticalSpeed * Time.deltaTime;
-        transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
-        var color = Color.Lerp(actualColor, goingColor, stepTime);
-        trailMaterial.color = color;
-        actualColor = color;
-        if (stepping)
-        {
-            stepTime = 0;
-            Debug.Log("Llegue");
-        }
+        return Mathf.Pow(2, positionY / 12.0f);
     }
 }
