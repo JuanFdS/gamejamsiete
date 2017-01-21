@@ -18,6 +18,7 @@ public class Pulpito : MonoBehaviour
 	bool red = false;
 	bool blue = false;
 	bool yellow = false;
+	float lastYExtraPos = 0;
     public void MoveVertically()
     {
 		if (stepping) {
@@ -79,10 +80,14 @@ public class Pulpito : MonoBehaviour
         MoveHorizontally();
     }
 
-    public void Update()
-    {
-        Move();
-    }
+	public void FixedUpdate(){
+		Move();
+		if (!stepping) {
+			var ypos = Mathf.Sin (3 * Time.time) / 1.5f;
+			transform.position += new Vector3 (0, ypos - lastYExtraPos, 0);
+			lastYExtraPos = ypos;
+		}
+	}
 
   void OnTriggerEnter2D(Collider2D collisioner){
     switch(collisioner.gameObject.tag){
@@ -98,9 +103,12 @@ public class Pulpito : MonoBehaviour
   }
 
   public void Step(){
-    stepTime = Mathf.Clamp01(stepTime + verticalSpeed * Time.deltaTime);
-		transform.position = Vector3.Lerp(lastPosition, nextPosition, Mathf.SmoothStep(0.0f, 1.0f, stepTime));
+    stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
+		transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime);
 
     stepping = stepTime < 1;
+		if (!stepping) {
+			Debug.Log ("Llegue");
+		}
   }
 }

@@ -138,12 +138,12 @@ Prefab:
     - target: {fileID: 114670056598536546, guid: 870cdce0efb114c2293bf910d6126854,
         type: 2}
       propertyPath: verticalSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114670056598536546, guid: 870cdce0efb114c2293bf910d6126854,
         type: 2}
       propertyPath: maxTimeToPressKeys
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 870cdce0efb114c2293bf910d6126854, type: 2}
