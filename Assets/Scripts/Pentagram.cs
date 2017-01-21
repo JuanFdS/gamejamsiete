@@ -23,6 +23,6 @@ public class Pentagram : MonoBehaviour
     
     public void FixedUpdate()
     {
-		transform.position = new Vector3(target.position.x, Mathf.Sin (3 * Time.time) / 1.5f, transform.position.z);
+		transform.position = new Vector3(target.position.x, movementOffset, transform.position.z);
     }
 }
