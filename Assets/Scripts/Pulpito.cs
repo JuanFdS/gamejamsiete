@@ -51,7 +51,6 @@ public class Pulpito : MonoBehaviour
 			if (yellow)
 				estoEsReCabeza += 4;
 
-			Debug.Log (estoEsReCabeza);
 			var line = GlobalConfig.Instance.Line (estoEsReCabeza);
 
 			nextPosition = new Vector3 (lastPosition.x, line.y, line.z);
@@ -100,7 +99,7 @@ public class Pulpito : MonoBehaviour
 
   public void Step(){
     stepTime = Mathf.Clamp01(stepTime + verticalSpeed * Time.deltaTime);
-    transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime);
+		transform.position = Vector3.Lerp(lastPosition, nextPosition, Mathf.SmoothStep(0.0f, 1.0f, stepTime));
 
     stepping = stepTime < 1;
   }
