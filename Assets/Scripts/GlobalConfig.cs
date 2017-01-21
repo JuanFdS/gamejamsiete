@@ -52,4 +52,9 @@ public class GlobalConfig : MonoBehaviour
 	public ColorsToLines RandomColorToLine(){
 		return colorsToLines [UnityEngine.Random.Range (0, colorsToLines.Count)];
 	}
+
+	public ColorsToLines RandomColorToNon3DLine(){
+		var plainColorToLines = colorsToLines.Where (colorToLine => colorToLine.line.z == 0).ToList ();
+		return plainColorToLines[UnityEngine.Random.Range (0, plainColorToLines.Count)];
+	}
 }

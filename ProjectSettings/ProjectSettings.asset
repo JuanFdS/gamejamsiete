@@ -454,10 +454,10 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     Build: 0
-    Collab: 0
+    Collab: 1
     ErrorHub: 0
     Hub: 0
-    UNet: 0
+    UNet: 1
   cloudProjectId: 7d174ad2-6d47-48a4-8f75-62ed97a40cf8
   projectName: Siete
   organizationId: francisco-hart

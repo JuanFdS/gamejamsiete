@@ -54,7 +54,7 @@ public class Generator : MonoBehaviour {
 	}
 
 	GlobalConfig.ColorsToLines GetNextLine(){
-		return GlobalConfig.Instance.RandomColorToLine ();
+		return GlobalConfig.Instance.RandomColorToNon3DLine ();
 	}
 
 	GameObject GetNextObstacle(){
