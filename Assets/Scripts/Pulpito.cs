@@ -73,4 +73,17 @@ public class Pulpito : MonoBehaviour
     {
         Move();
     }
+
+  void OnTriggerEnter2D(Collider2D collisioner){
+    switch(collisioner.gameObject.tag){
+      case "Obstacle": {
+        Debug.Log("Colisionó");
+        break;
+      }
+    }
+  }
+
+  public float DistanceTraveledInFrame(){
+    return horizontalSpeed * Time.deltaTime;
+  }
 }
