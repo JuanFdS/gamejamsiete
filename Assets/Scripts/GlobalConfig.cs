@@ -41,8 +41,15 @@ public class GlobalConfig : MonoBehaviour
 	public Line Line(string color){
     	return colorsToLines.Find(colorToLine => colorToLine.color == color).line;
   	}
+	public ColorsToLines ColorToLines(string color){
+		return colorsToLines.Find (colorToLine => colorToLine.color == color);
+	}
 
   public Line RandomLine(){
 		return Lines()[UnityEngine.Random.Range(0, colorsToLines.Count)];
   }
+
+	public ColorsToLines RandomColorToLine(){
+		return colorsToLines [UnityEngine.Random.Range (0, colorsToLines.Count)];
+	}
 }

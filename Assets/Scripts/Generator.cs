@@ -42,16 +42,19 @@ public class Generator : MonoBehaviour {
 
 	void SpawnObstacle(){
 		var obstaculo = GetNextObstacle();
-		var posicion = GetNextPosition();
-		var instanciaObstaculo = Instantiate(obstaculo, posicion, Quaternion.identity);
-		instanciaObstaculo.GetComponent<IObstaculo> ().Initialize ();
+		var linea = GetNextLine();
+		var instanciaObstaculo = Instantiate(obstaculo, GetNextPosition(), Quaternion.identity);
+		instanciaObstaculo.GetComponent<IObstaculo> ().Initialize (linea);
 		Destroy(instanciaObstaculo, lifeTime);
 	}
 
 	Vector3 GetNextPosition(){
 		var xPosition = PlayerPosition().x + xOffset;
-		var yPosition = GlobalConfig.Instance.RandomLine().y;
-		return new Vector3(xPosition, yPosition, 0);
+		return new Vector3(xPosition, 0, 0);
+	}
+
+	GlobalConfig.ColorsToLines GetNextLine(){
+		return GlobalConfig.Instance.RandomColorToLine ();
 	}
 
 	GameObject GetNextObstacle(){
