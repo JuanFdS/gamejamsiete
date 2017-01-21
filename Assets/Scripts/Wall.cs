@@ -13,20 +13,13 @@ public class Wall : ObstaculoEstatico {
 		public Material material;
 	}
 	public List<WallColor> colors;
-	public Dictionary<string, Material> wallColors;
 
 	public Material selectedMaterial;
-
-	void Start () {
-		wallColors = colors.ToDictionary(color => color.colorName, color => color.material);
-	}
-
-	void Update () {
-	}
-
+    
 	override public void Initialize(GlobalConfig.ColorsToLines colorsToLines){
 		base.Initialize (colorsToLines);
-		var material = wallColors [colorsToLines.color];
+        var wallColors = colors.ToDictionary(color => color.colorName, color => color.material);
+        var material = wallColors [colorsToLines.color];
 		var children = GetComponentsInChildren<MeshRenderer> ();
 		foreach (var child in children){
 			child.material = material;
