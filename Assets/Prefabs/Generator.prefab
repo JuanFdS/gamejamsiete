@@ -54,7 +54,8 @@ MonoBehaviour:
   player: {fileID: 0}
   nextObstacleInMeters: 5
   obstaculos:
-  - {fileID: 1845589918531354, guid: 7936053bdca9a4352b8e32dc48c1ce75, type: 2}
+  - {fileID: 114421563820537482, guid: 7936053bdca9a4352b8e32dc48c1ce75, type: 2}
+  - {fileID: 114250358005830164, guid: 233764fe714524fe4bc85c808544a060, type: 2}
   minY: -5
   maxY: 5
   xOffset: 10

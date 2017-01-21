@@ -25,6 +25,14 @@ public class GlobalConfig : MonoBehaviour
 
 	    Instance = this;
     }
+
+	private List<Line> Lines(){
+		return colorsToLines.Select (colorToLine => colorToLine.line).ToList();
+	}
+
+	private List<string> Colors(){
+		return colorsToLines.Select (colorToLine => colorToLine.color).ToList();
+	}
 		
 	public Line Line(int encodedValue){
 		return colorsToLines.Find(colorToLine => colorToLine.encodedValue == encodedValue).line;
@@ -34,6 +42,6 @@ public class GlobalConfig : MonoBehaviour
   	}
 
   public Line RandomLine(){
-		return colorsToLines.Select(colorToLine => colorToLine.line).ToList()[UnityEngine.Random.Range(0, colorsToLines.Count)];
+		return Lines()[UnityEngine.Random.Range(0, colorsToLines.Count)];
   }
 }

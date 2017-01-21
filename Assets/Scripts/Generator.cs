@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class Generator : MonoBehaviour {
 
 	const float MetersToGenerateNextObstacle = 5;
@@ -10,7 +10,7 @@ public class Generator : MonoBehaviour {
 
 	public float nextObstacleInMeters;
 
-	public List<GameObject> obstaculos;
+	public List<IObstaculo> obstaculos;
 
 	public int minY;
 
@@ -54,6 +54,7 @@ public class Generator : MonoBehaviour {
 	}
 
 	GameObject GetNextObstacle(){
-		return obstaculos[0];
+		var obstaculosInstaciables = obstaculos.Select (Obstaculo => Obstaculo.gameObject).ToList();
+		return obstaculosInstaciables[Random.Range(0, obstaculosInstaciables.Count)];
 	}
 }
