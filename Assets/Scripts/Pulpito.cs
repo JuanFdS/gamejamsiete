@@ -24,6 +24,10 @@ public class Pulpito : MonoBehaviour
 	private Color goingColor;
 	public Color actualColor;
 
+	public void Start(){
+		goingColor = actualColor;
+	}
+
     public void MoveVertically()
     {
 			Step ();
