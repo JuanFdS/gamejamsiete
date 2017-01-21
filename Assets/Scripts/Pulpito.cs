@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pulpito : MonoBehaviour
 {
+
     public float horizontalSpeed;
     public float verticalSpeed;
 
@@ -108,7 +109,7 @@ public class Pulpito : MonoBehaviour
   }
 
   public void Step(){
-    stepTime += verticalSpeed * Time.deltaTime;
+		stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
 		transform.position = Vector3.Lerp (lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
 		var color = Color.Lerp(actualColor, goingColor,  stepTime);
 		trailMaterial.color = color;
