@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4777921747901876}
   - component: {fileID: 96050770967365190}
-  - component: {fileID: 114951363573432486}
   m_Layer: 0
   m_Name: PentagramLine
   m_TagString: Untagged
@@ -73,7 +72,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 15
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.15
@@ -139,15 +138,3 @@ TrailRenderer:
     textureMode: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114951363573432486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1077172471820184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3031a87d697804f4bbd884f138ea0694, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
