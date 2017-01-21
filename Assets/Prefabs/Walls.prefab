@@ -71,7 +71,7 @@ Transform:
   m_GameObject: {fileID: 1293304568556966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 8, z: 0}
-  m_LocalScale: {x: 4.159332, y: 14.44152, z: 1}
+  m_LocalScale: {x: 4.159332, y: 14.44152, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4337895818355906}
   m_RootOrder: 1
@@ -99,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 1989528419665288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -8, z: 0}
-  m_LocalScale: {x: 4.159332, y: 11.10986, z: 1}
+  m_LocalScale: {x: 4.159332, y: 11.10986, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4337895818355906}
   m_RootOrder: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   - colorName: Yellow
     material: {fileID: 2100000, guid: 6ae4a5d7bb6044dc7b1f534ce0d4d267, type: 2}
   - colorName: Orange
-    material: {fileID: 2100000, guid: 6ae4a5d7bb6044dc7b1f534ce0d4d267, type: 2}
+    material: {fileID: 2100000, guid: 16df561ed988444408f02081b47488a3, type: 2}
   - colorName: White
-    material: {fileID: 2100000, guid: 6ae4a5d7bb6044dc7b1f534ce0d4d267, type: 2}
+    material: {fileID: 2100000, guid: 078850e7b21f54a018aeb369597a2700, type: 2}
   selectedMaterial: {fileID: 2100000, guid: 8aa394f8b9c61468d81e95b879a527c7, type: 2}

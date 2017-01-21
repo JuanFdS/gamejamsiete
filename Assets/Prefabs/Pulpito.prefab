@@ -22,9 +22,11 @@ GameObject:
   - component: {fileID: 212141135118419530}
   - component: {fileID: 135362256618535406}
   - component: {fileID: 114575890714478852}
-  - component: {fileID: 54747157129253722}
   - component: {fileID: 135982853146119776}
   - component: {fileID: 114343531797910076}
+  - component: {fileID: 54903207440000904}
+  - component: {fileID: 135910608295784200}
+  - component: {fileID: 114392491844704858}
   m_Layer: 0
   m_Name: AreaDeEfecto
   m_TagString: Untagged
@@ -94,7 +96,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!54 &54747157129253722
+--- !u!54 &54903207440000904
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -230,6 +232,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895e65c8ccad24247a7a20ef78e0d007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114392491844704858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1265353001451286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895e65c8ccad24247a7a20ef78e0d007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114575890714478852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,6 +272,18 @@ MonoBehaviour:
   trailMaterial: {fileID: 2100000, guid: 9cfb5fe2aa57e8549924f580802d91b4, type: 2}
   actualColor: {r: 0.034482475, g: 0, b: 1, a: 0}
 --- !u!135 &135362256618535406
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1265353001451286}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135910608295784200
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

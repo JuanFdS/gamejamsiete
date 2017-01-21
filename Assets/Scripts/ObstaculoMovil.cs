@@ -21,6 +21,7 @@ public class ObstaculoMovil : IObstaculo {
 		base.Initialize (colorsToLines);
 		amplitude = Random.Range (2f, 3f);
 		frecuency = Random.Range (3f, 6f);
+		transform.localScale += new Vector3 (Random.Range (0f, 5f), Random.Range (0f, 10f), 0f);
 	}
 
 	// Use this for initialization
