@@ -17,14 +17,18 @@ public class GlobalConfig : MonoBehaviour
 
     public List<ColorsToLines> colorsToLines;
 
+    public float Distance { get; set; }
+
 	void Awake ()
-    {
+	{
 	    if (Instance != null)
 	    {
+	        Instance.Distance = 0;
 	        Destroy(gameObject);
 	    }
 
 	    Instance = this;
+        DontDestroyOnLoad(this);
     }
 
 	private List<Line> Lines(){
