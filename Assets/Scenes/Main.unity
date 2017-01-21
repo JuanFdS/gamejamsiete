@@ -130,16 +130,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 96312963242325290, guid: 870cdce0efb114c2293bf910d6126854,
-        type: 2}
-      propertyPath: m_Autodestruct
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65826812694446360, guid: 870cdce0efb114c2293bf910d6126854,
-        type: 2}
-      propertyPath: m_Size.z
-      value: 0.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 870cdce0efb114c2293bf910d6126854, type: 2}
   m_IsPrefabParent: 0
@@ -226,12 +216,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114058669410949508, guid: 3b3d9e6571f7d9b4a9c2d02871890dd4,
         type: 2}
-      propertyPath: line
-      value: 
-      objectReference: {fileID: 1077172471820184, guid: a6a9aeeeb934e844cbe49f499a7c0a6e,
-        type: 2}
-    - target: {fileID: 114058669410949508, guid: 3b3d9e6571f7d9b4a9c2d02871890dd4,
-        type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 1466081962}
@@ -239,11 +223,6 @@ Prefab:
         type: 2}
       propertyPath: lineOffsetY
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114058669410949508, guid: 3b3d9e6571f7d9b4a9c2d02871890dd4,
-        type: 2}
-      propertyPath: lineOffsetX
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b3d9e6571f7d9b4a9c2d02871890dd4, type: 2}

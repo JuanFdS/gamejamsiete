@@ -100,7 +100,7 @@ public class Pulpito : MonoBehaviour
 	public void FixedUpdate(){
 		Move();
         
-		var ypos = Mathf.Sin((goinglLine.y / 2 + 8) * Time.time) / 1.5f;
+		var ypos = Mathf.Sin((goinglLine.y / 2 + 8) * Time.time) / 2.5f;
         var pitch = Mathf.Lerp(previousPitch, converToTone(goinglLine.y), 0.05f);
         audio.pitch = pitch;
 	    previousPitch = pitch;

@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  offsetX: 5
 --- !u!124 &124106581746040544
 Behaviour:
   m_ObjectHideFlags: 1
