@@ -4,7 +4,10 @@ using UnityEngine;
 
 abstract public class IObstaculo : MonoBehaviour {
 
-	abstract public void Initialize ();
+	virtual public void Initialize (GlobalConfig.ColorsToLines colorsToLines){
+		transform.position = new Vector3 (transform.position.x, colorsToLines.line.y, 0);
+	}
+		
 	abstract public void BeAffectedBy (EffectArea specialPower);
 	// Use this for initialization
 	void Start () {

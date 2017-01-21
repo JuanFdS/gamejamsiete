@@ -17,7 +17,8 @@ public class ObstaculoMovil : IObstaculo {
 		return (Mathf.Sin (timeAlive * frecuency) - 0.5f) * amplitude;
 	}
 
-	override public void Initialize(){
+	override public void Initialize(GlobalConfig.ColorsToLines colorsToLines){
+		base.Initialize (colorsToLines);
 		amplitude = Random.Range (2f, 3f);
 		frecuency = Random.Range (3f, 6f);
 	}

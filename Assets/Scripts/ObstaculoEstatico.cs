@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ObstaculoEstatico : IObstaculo {
 
-	override public void Initialize(){
-	}
-
 	override public void BeAffectedBy(EffectArea specialPower){
 		Destroy (this.gameObject);
 	}
