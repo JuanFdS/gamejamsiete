@@ -1,6 +1,6 @@
 ﻿using System;
-
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pulpito : MonoBehaviour
 {
@@ -169,7 +169,7 @@ public class Pulpito : MonoBehaviour
         {
             case "Obstacle":
                 {
-                    Debug.Log("Colisionó");
+					SceneManager.LoadScene("GameOver");
                     break;
                 }
         }
