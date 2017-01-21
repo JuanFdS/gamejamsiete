@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 
 public class Pulpito : MonoBehaviour
 {
@@ -23,7 +25,7 @@ public class Pulpito : MonoBehaviour
 
 	private Color goingColor;
 	public Color actualColor;
-
+    
 	public void Start(){
 		goingColor = actualColor;
 	}
@@ -69,7 +71,6 @@ public class Pulpito : MonoBehaviour
 			yellow = false;
 			blue = false;
 			timeOfFirstKey = 0;
-			estoEsReCabeza = 0;
 		}
 	  
     }

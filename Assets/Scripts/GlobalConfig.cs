@@ -17,7 +17,7 @@ public class GlobalConfig : MonoBehaviour
 
     public List<ColorsToLines> colorsToLines;
 
-	void Start ()
+	void Awake ()
     {
 	    if (Instance != null)
 	    {
