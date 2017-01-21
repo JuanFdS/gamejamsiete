@@ -8,8 +8,12 @@ public class Pulpito : MonoBehaviour
     public float horizontalSpeed;
     public float verticalSpeed;
 
+    public int currentLine = 3;
+
     public float coolDown = 100;
     public float timeToRecharge = 0.5f;
+
+    private int lastLine = 2;
 
     private Vector3 lastPosition;
     private Vector3 nextPosition;
@@ -25,35 +29,28 @@ public class Pulpito : MonoBehaviour
 
     public Material trailMaterial;
 
-    
-	private Color goingColor;
-	public Color actualColor;
+    private Color goingColor;
+    public Color actualColor;
 
     private Line goinglLine;
     private float previousPitch;
     private AudioSource audio;
 
-    public void Start(){
-		goingColor = actualColor;
+    public void Start()
+    {
+        goingColor = actualColor;
         goinglLine = GlobalConfig.Instance.Line(1).line;
         previousPitch = converToTone(goinglLine.y);
         audio = GetComponent<AudioSource>();
     }
 
-    private int lastLine = 2;
-
-    public void Start()
-    {
-        goingColor = actualColor;
-    }
-
     public void MoveVertically()
     {
-		Step ();
-		lastPosition = transform.position;
-		stepTime = 0;
+        Step();
+        lastPosition = transform.position;
+        stepTime = 0;
 
-		MoveVerticallyBasedOnInput ();
+        MoveVerticallyBasedOnInput();
     }
 
     public void MoveVerticallyBasedOnInput()
@@ -67,57 +64,44 @@ public class Pulpito : MonoBehaviour
         if (Input.GetButtonDown("Yellow"))
             yellow = true;
 
-        if (red || blue || yellow)
+        if (timeOfFirstKey == 0)
         {
-            if (timeOfFirstKey == 0)
-            {
+            if (red || blue || yellow)
                 timeOfFirstKey = Time.time;
-            }
-            else if (timeOfFirstKey + maxTimeToPressKeys <= Time.time)
-            {
-                if (red)
-                    estoEsReCabeza += 1;
-                if (blue)
-                    estoEsReCabeza += 2;
-                if (yellow)
-                    estoEsReCabeza += 4;
+        }
+        else if (timeOfFirstKey + maxTimeToPressKeys <= Time.time)
+        {
+            if (red)
+                estoEsReCabeza += 1;
+            if (blue)
+                estoEsReCabeza += 2;
+            if (yellow)
+                estoEsReCabeza += 4;
 
-                if (coolDown == 0)
-                {
-                    estoEsReCabeza = lastLine;
-                }
-                else if (estoEsReCabeza != 5 && estoEsReCabeza != 7)
-                {
-                    lastLine = estoEsReCabeza;
-                }
+            if (coolDown == 0)
+            {
+                estoEsReCabeza = lastLine;
+            }
+            else if (estoEsReCabeza != 5 && estoEsReCabeza != 7)
+            {
+                lastLine = estoEsReCabeza;
+            }
+
+            var colorToLines = GlobalConfig.Instance.Line(estoEsReCabeza);
 
             goinglLine = colorToLines.line;
             goingColor = colorToLines.realColor;
 
-			nextPosition = new Vector3 (lastPosition.x, goinglLine.y, goinglLine.z);
-
-                nextPosition = new Vector3(lastPosition.x, line.y, line.z);
-
-                stepping = true;
-
-                red = false;
-                blue = false;
-                yellow = false;
-                timeOfFirstKey = 0;
-            }
-        }
-
-        if (coolDown == 0)
-        {
-            var colorToLines = GlobalConfig.Instance.Line(lastLine);
-            var line = colorToLines.line;
-
-            goingColor = colorToLines.realColor;
-
-            nextPosition = new Vector3(lastPosition.x, line.y, line.z);
+            nextPosition = new Vector3(lastPosition.x, goinglLine.y, goinglLine.z);
 
             stepping = true;
+
+            red = false;
+            yellow = false;
+            blue = false;
+            timeOfFirstKey = 0;
         }
+
     }
 
     public void MoveHorizontally()
@@ -134,15 +118,16 @@ public class Pulpito : MonoBehaviour
         MoveHorizontally();
     }
 
-	public void FixedUpdate(){
-		Move();
-        
-		var ypos = Mathf.Sin((goinglLine.y / 2 + 8) * Time.time) / 2.5f;
+    public void FixedUpdate()
+    {
+        Move();
+
+        var ypos = Mathf.Sin((goinglLine.y / 2 + 8) * Time.time) / 2.5f;
         var pitch = Mathf.Lerp(previousPitch, converToTone(goinglLine.y), 0.05f);
         audio.pitch = pitch;
-	    previousPitch = pitch;
-        transform.position += new Vector3 (0, ypos, 0);
-	}
+        previousPitch = pitch;
+        transform.position += new Vector3(0, ypos, 0);
+    }
 
     public void Update()
     {
@@ -177,17 +162,24 @@ public class Pulpito : MonoBehaviour
         }
     }
 
-  public void Step(){
-		stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
-		transform.position = Vector3.Lerp (lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
-		var color = Color.Lerp(actualColor, goingColor,  stepTime);
-		trailMaterial.color = color;
-		actualColor = color;
-    stepping = stepTime < 1;
-		if (!stepping) {
-			Debug.Log ("Llegue");
-		}
-  	}
+    public float DistanceTraveledInFrame()
+    {
+        return horizontalSpeed * Time.deltaTime;
+    }
+
+    public void Step()
+    {
+        stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
+        var color = Color.Lerp(actualColor, goingColor, stepTime);
+        trailMaterial.color = color;
+        actualColor = color;
+        stepping = stepTime < 1;
+        if (!stepping)
+        {
+            Debug.Log("Llegue");
+        }
+    }
 
     private float converToTone(float positionY)
     {
