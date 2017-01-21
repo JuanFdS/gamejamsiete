@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33802875084122612}
   - component: {fileID: 65957464819906436}
   - component: {fileID: 23788005794204756}
+  - component: {fileID: 114677203181563932}
   m_Layer: 0
   m_Name: Top
   m_TagString: Obstacle
@@ -37,7 +38,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4337895818355906}
-  - component: {fileID: 114099576947722956}
+  - component: {fileID: 114478944027742528}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -56,6 +57,7 @@ GameObject:
   - component: {fileID: 33737166261852170}
   - component: {fileID: 65336449980470696}
   - component: {fileID: 23431326024514690}
+  - component: {fileID: 114212255664371790}
   m_Layer: 0
   m_Name: Bottom
   m_TagString: Obstacle
@@ -204,7 +206,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114099576947722956
+--- !u!114 &114212255664371790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989528419665288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eba83c6faaa04beaa9f8544fa7dd8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114478944027742528
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -216,18 +229,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
+  - colorName: Blue
+    material: {fileID: 2100000, guid: 530849a0c10854916846f9dabeca5bc2, type: 2}
+  - colorName: Yellow
+    material: {fileID: 2100000, guid: 6ae4a5d7bb6044dc7b1f534ce0d4d267, type: 2}
+  - colorName: Green
+    material: {fileID: 2100000, guid: a1f4624f68d554bf7b42ec6c454724ba, type: 2}
   - colorName: Red
     material: {fileID: 2100000, guid: 8aa394f8b9c61468d81e95b879a527c7, type: 2}
   - colorName: Purple
     material: {fileID: 2100000, guid: 7e011281d91cf401b859e28ed7fddaa3, type: 2}
-  - colorName: Blue
-    material: {fileID: 2100000, guid: 530849a0c10854916846f9dabeca5bc2, type: 2}
-  - colorName: Green
-    material: {fileID: 2100000, guid: a1f4624f68d554bf7b42ec6c454724ba, type: 2}
-  - colorName: Yellow
-    material: {fileID: 2100000, guid: 6ae4a5d7bb6044dc7b1f534ce0d4d267, type: 2}
-  - colorName: Orange
-    material: {fileID: 2100000, guid: 16df561ed988444408f02081b47488a3, type: 2}
   - colorName: White
     material: {fileID: 2100000, guid: 078850e7b21f54a018aeb369597a2700, type: 2}
+  - colorName: Orange
+    material: {fileID: 2100000, guid: 16df561ed988444408f02081b47488a3, type: 2}
   selectedMaterial: {fileID: 2100000, guid: 8aa394f8b9c61468d81e95b879a527c7, type: 2}
+--- !u!114 &114677203181563932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293304568556966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eba83c6faaa04beaa9f8544fa7dd8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
