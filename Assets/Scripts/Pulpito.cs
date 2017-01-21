@@ -14,6 +14,7 @@ public class Pulpito : MonoBehaviour
     private bool stepping;
 
 	private float timeOfFirstKey=0;
+	public float maxTimeToPressKeys=0.05f;
 	bool red = false;
 	bool blue = false;
 	bool yellow = false;
@@ -34,20 +35,36 @@ public class Pulpito : MonoBehaviour
     public void MoveVerticallyBasedOnInput(){
 		var estoEsReCabeza = 0;
 
-		red = Input.GetButtonDown ("Red");
-		blue = Input.GetButtonDown ("Blue");
-		yellow = Input.GetButtonDown ("Yellow");
-		if (Input.GetButtonDown("Red")){ red = true; estoEsReCabeza += 1; };
-		if (Input.GetButtonDown("Blue")){ blue= true; estoEsReCabeza += 2; };
-		if (Input.GetButtonDown("Yellow")){ yellow = true; estoEsReCabeza += 4; };
-	  
-		if (estoEsReCabeza != 0) {
+		if(Input.GetButtonDown ("Red")) red = true;
+		if(Input.GetButtonDown ("Blue")) blue = true;
+		if(Input.GetButtonDown ("Yellow")) yellow = true;
+
+		if (timeOfFirstKey == 0) {
+			if(red || blue || yellow)
+				timeOfFirstKey = Time.time;
+		}
+		else if (timeOfFirstKey + maxTimeToPressKeys <= Time.time) {
+			if (red)
+				estoEsReCabeza += 1;
+			if (blue)
+				estoEsReCabeza += 2;
+			if (yellow)
+				estoEsReCabeza += 4;
+
+			Debug.Log (estoEsReCabeza);
 			var line = GlobalConfig.Instance.Line (estoEsReCabeza);
-				
+
 			nextPosition = new Vector3 (lastPosition.x, line.y, line.z);
 
 			stepping = true;
+
+			red = false;
+			yellow = false;
+			blue = false;
+			timeOfFirstKey = 0;
+			estoEsReCabeza = 0;
 		}
+	  
     }
 
     public void MoveHorizontally()
