@@ -8,7 +8,7 @@ public class Pulpito : MonoBehaviour
     public float horizontalSpeed;
     public float verticalSpeed;
 
-    public int currentLine = 3;
+    public int currentLine = 2;
 
     public float coolDown = 100;
     public float timeToRecharge = 0.5f;
@@ -33,13 +33,13 @@ public class Pulpito : MonoBehaviour
     public Color actualColor;
 
     private Line goinglLine;
-    private float previousPitch;
+    private float previousPitch = 1;
     private AudioSource audio;
 
     public void Start()
     {
         goingColor = actualColor;
-        goinglLine = GlobalConfig.Instance.Line(1).line;
+        goinglLine = GlobalConfig.Instance.Line(2).line;
         previousPitch = converToTone(goinglLine.y);
         audio = GetComponent<AudioSource>();
     }
@@ -133,7 +133,7 @@ public class Pulpito : MonoBehaviour
     {
         Move();
 
-        var ypos = Mathf.Sin((goinglLine.y / 2 + 8) * Time.time) / 2.5f;
+        var ypos = Mathf.Sin(goinglLine.frequency * Time.time) / 2.5f;
         var pitch = Mathf.Lerp(previousPitch, converToTone(goinglLine.y), 0.05f);
         audio.pitch = pitch;
         previousPitch = pitch;
