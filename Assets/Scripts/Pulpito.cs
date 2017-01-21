@@ -35,10 +35,11 @@ public class Pulpito : MonoBehaviour
     private Line goinglLine;
     private float previousPitch;
     private AudioSource audio;
+	public ParticleSystem particulas;
+	public bool enLinea = true;
 
-    public void Start()
-    {
-        goingColor = actualColor;
+    public void Start(){
+		goingColor = actualColor;
         goinglLine = GlobalConfig.Instance.Line(1).line;
         previousPitch = converToTone(goinglLine.y);
         audio = GetComponent<AudioSource>();
@@ -88,31 +89,26 @@ public class Pulpito : MonoBehaviour
             }
 
             var colorToLines = GlobalConfig.Instance.Line(estoEsReCabeza);
+			if (Vector4.Distance (colorToLines.realColor, actualColor) > 0.1f) {
+				goinglLine = colorToLines.line;
+				goingColor = colorToLines.realColor;
 
-            goinglLine = colorToLines.line;
-            goingColor = colorToLines.realColor;
+				particulas.startColor = goingColor;
 
-            nextPosition = new Vector3(lastPosition.x, goinglLine.y, goinglLine.z);
+				nextPosition = new Vector3 (lastPosition.x, goinglLine.y, goinglLine.z);
+				enLinea = false;
+				stepping = true;
 
-            stepping = true;
+			}
 
-            red = false;
-            yellow = false;
-            blue = false;
-            timeOfFirstKey = 0;
-        }
+           
 
-        if (coolDown == 0)
-        {
-            var colorToLines = GlobalConfig.Instance.Line(lastLine);
 
-            goinglLine = colorToLines.line;
-            goingColor = colorToLines.realColor;
-
-            nextPosition = new Vector3(lastPosition.x, goinglLine.y, goinglLine.z);
-
-            stepping = true;
-        }
+			red = false;
+			yellow = false;
+			blue = false;
+			timeOfFirstKey = 0;
+		}
     }
 
     public void MoveHorizontally()
@@ -180,17 +176,19 @@ public class Pulpito : MonoBehaviour
         return horizontalSpeed * Time.deltaTime;
     }
 
-    public void Step()
-    {
+    public void Step(){
         stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
-        transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
-        var color = Color.Lerp(actualColor, goingColor, stepTime);
+        transform.position = Vector3.Lerp (lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
+        var color = Color.Lerp(actualColor, goingColor,  stepTime);
         trailMaterial.color = color;
         actualColor = color;
-        stepping = stepTime < 1;
-        if (!stepping)
-        {
-            Debug.Log("Llegue");
+    stepping = stepTime < 1;
+        if (Vector4.Distance (goingColor, actualColor) < 0.1f && !enLinea) {
+            //entered a line
+            enLinea = true;
+        }
+        if (!stepping) {
+            
         }
     }
 
