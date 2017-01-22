@@ -121,7 +121,7 @@ public class Pulpito : MonoBehaviour
     private void GoToNewLine(int estoEsReCabeza)
     {
         var colorToLines = GlobalConfig.Instance.Line(estoEsReCabeza);
-        if (Vector4.Distance(colorToLines.realColor, actualColor) > 0.1f)
+        if (Vector4.Distance(colorToLines.realColor, actualColor) > 0.05f)
         {
             goinglLine = colorToLines.line;
             goingColor = colorToLines.realColor;
@@ -231,7 +231,7 @@ public class Pulpito : MonoBehaviour
         trailMaterial.color = color;
         actualColor = color;
         stepping = stepTime < 1;
-        if (Vector4.Distance(goingColor, actualColor) < 0.1f && !enLinea)
+        if (Vector4.Distance(goingColor, actualColor) < 0.05f && !enLinea)
         {
             //entered a line
             enLinea = true;
