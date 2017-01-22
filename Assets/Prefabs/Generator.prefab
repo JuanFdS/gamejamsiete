@@ -57,16 +57,13 @@ MonoBehaviour:
     minMetersPerObstacle: 10
   player: {fileID: 0}
   obstaculos:
-  - obstaculo: {fileID: 114833232229930298, guid: 7936053bdca9a4352b8e32dc48c1ce75,
+  - obstaculo: {fileID: 114833232229930298, guid: 256ff6a09a647984b876a8f8a7bf671c,
       type: 2}
     spawnPercetange: 50
-  - obstaculo: {fileID: 114989760311823584, guid: 233764fe714524fe4bc85c808544a060,
+  - obstaculo: {fileID: 114548024528549242, guid: 3036d141472ce40469a0675fcade4de8,
       type: 2}
     spawnPercetange: 50
-  - obstaculo: {fileID: 114548024528549242, guid: 0c495a2c8197241eb8ce6c2a767b577c,
-      type: 2}
-    spawnPercetange: 50
-  - obstaculo: {fileID: 114046857300333780, guid: a21fcf317a375904f9c0ce66321a8b51,
+  - obstaculo: {fileID: 114046857300333780, guid: 7aeebcc93f8284241968da5285cf446b,
       type: 2}
     spawnPercetange: 40
   - obstaculo: {fileID: 114368984432004276, guid: 5ec830793887b784a8ed1215a93d1d15,

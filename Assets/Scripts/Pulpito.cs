@@ -13,7 +13,8 @@ public class Pulpito : MonoBehaviour
 
     public float coolDown = 100;
     public float timeToRecharge = 0.5f;
-    public float coolSpeed = 5f;
+    public float coolSpeed = 25f;
+    public float coolSpeedUp = 5f;
 
     public Animator head;
     public Animator tentacles;
@@ -180,7 +181,7 @@ public class Pulpito : MonoBehaviour
         }
         else if (timeToRecharge < 0)
         {
-            coolDown += Time.deltaTime * coolSpeed;
+            coolDown += Time.deltaTime * coolSpeedUp;
             coolDown = Mathf.Min(coolDown, 100);
 			audio.clip = commonClip;
 			if (!audio.isPlaying) {

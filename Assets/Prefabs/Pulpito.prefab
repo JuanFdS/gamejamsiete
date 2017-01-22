@@ -569,12 +569,13 @@ MonoBehaviour:
   verticalSpeed: 5
   currentLine: 3
   moneyBoostGrant: 10
-  coolDown: 0
+  coolDown: 100
   timeToRecharge: 0.5
-  coolSpeed: 5
+  coolSpeed: 25
+  coolSpeedUp: 5
   head: {fileID: 95336395621695200}
   tentacles: {fileID: 95357833668459860}
-  maxTimeToPressKeys: 0.05
+  maxTimeToPressKeys: 0.03
   trailMaterial: {fileID: 2100000, guid: 4c0431c79be550b4ebf84382cc0b3e8f, type: 2}
   actualColor: {r: 0.034482475, g: 0, b: 1, a: 0}
   enLinea: 1
