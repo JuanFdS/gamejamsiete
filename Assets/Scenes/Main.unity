@@ -179,6 +179,16 @@ Prefab:
       propertyPath: maxTimeToPressKeys
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 114287096101081684, guid: 870cdce0efb114c2293bf910d6126854,
+        type: 2}
+      propertyPath: commonClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fdd28f0742831ce478376c2b9352e1a5, type: 3}
+    - target: {fileID: 114287096101081684, guid: 870cdce0efb114c2293bf910d6126854,
+        type: 2}
+      propertyPath: metalClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0989ec9a50501476a819c57345ff8717, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 870cdce0efb114c2293bf910d6126854, type: 2}
   m_IsPrefabParent: 0
@@ -957,6 +967,36 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1944359057}
+    - target: {fileID: 114022411379362946, guid: 04f99be7a83e5e44e80121e56c725e9b,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114022411379362946, guid: 04f99be7a83e5e44e80121e56c725e9b,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114022411379362946, guid: 04f99be7a83e5e44e80121e56c725e9b,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114814812768546340, guid: 04f99be7a83e5e44e80121e56c725e9b,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114814812768546340, guid: 04f99be7a83e5e44e80121e56c725e9b,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114814812768546340, guid: 04f99be7a83e5e44e80121e56c725e9b,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04f99be7a83e5e44e80121e56c725e9b, type: 2}
   m_IsPrefabParent: 0
