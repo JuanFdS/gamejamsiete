@@ -3,9 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public GameObject howToPlayPopup;
+    public GameObject pulpito;
+
     public void OnPlay()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void OnHowToPlay()
+    {
+        howToPlayPopup.SetActive(true);
+        pulpito.SetActive(false);
+    }
+
+    public void OnCloseHowToPlay()
+    {
+        howToPlayPopup.SetActive(false);
+        pulpito.SetActive(true);
     }
 
     public void OnExit()
