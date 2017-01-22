@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
@@ -18,3 +19,28 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
+=======
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{F0FBEADE-2889-4DC5-7142-7E67A4441894}") = "gamejamsiete", "Assembly-CSharp.csproj", "{BB673D9C-D61A-38A5-ED2D-548CF1B74DE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB673D9C-D61A-38A5-ED2D-548CF1B74DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB673D9C-D61A-38A5-ED2D-548CF1B74DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB673D9C-D61A-38A5-ED2D-548CF1B74DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB673D9C-D61A-38A5-ED2D-548CF1B74DE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
+>>>>>>> master
