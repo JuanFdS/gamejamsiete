@@ -41,12 +41,16 @@ public class Pulpito : MonoBehaviour
     private AudioSource audio;
     public bool enLinea = true;
 
+	public AudioClip commonClip;
+	public AudioClip metalClip;
+
     public void Start()
     {
         goingColor = actualColor;
         goinglLine = GlobalConfig.Instance.Line(2).line;
         previousPitch = converToTone(goinglLine.y);
         audio = GetComponent<AudioSource>();
+		audio.clip = commonClip;
     }
 
     public void MoveVertically()
@@ -86,6 +90,10 @@ public class Pulpito : MonoBehaviour
             if (coolDown == 0)
             {
                 estoEsReCabeza = lastLine;
+				audio.clip = commonClip;
+				if (!audio.isPlaying) {
+					audio.Play ();
+				}
             }
             else if (estoEsReCabeza != 5 && estoEsReCabeza != 7)
             {
@@ -103,6 +111,10 @@ public class Pulpito : MonoBehaviour
         if (coolDown == 0)
         {
             GoToNewLine(lastLine);
+			audio.clip = commonClip;
+			if (!audio.isPlaying) {
+				audio.Play ();
+			}
         }
     }
 
@@ -159,15 +171,30 @@ public class Pulpito : MonoBehaviour
             coolDown -= Time.deltaTime * coolSpeed;
             coolDown = Mathf.Max(0, coolDown);
             timeToRecharge = 1.5f;
+			audio.clip = metalClip;
+			if (!audio.isPlaying) {
+				audio.time = 3;
+				audio.Play ();
+			}
+
+
         }
         else if (timeToRecharge < 0)
         {
             coolDown += Time.deltaTime * coolSpeed;
             coolDown = Mathf.Min(coolDown, 100);
+			audio.clip = commonClip;
+			if (!audio.isPlaying) {
+				audio.Play ();
+			}
         }
         else
         {
             timeToRecharge -= Time.deltaTime;
+			audio.clip = commonClip;
+			if (!audio.isPlaying) {
+				audio.Play ();
+			}
         }
 
         GlobalConfig.Instance.Distance = transform.position.x / 25;
