@@ -14,6 +14,9 @@ public class Pulpito : MonoBehaviour
     public float coolDown = 100;
     public float timeToRecharge = 0.5f;
 
+    public Animator head;
+    public Animator tentacles;
+
     private int lastLine = 2;
 
     private Vector3 lastPosition;
@@ -135,9 +138,14 @@ public class Pulpito : MonoBehaviour
     {
         Move();
 
+        var animationSpeed = (goinglLine.frequency / 4.5f);
+        //animationSpeed *= animationSpeed;
+
         var ypos = Mathf.Sin(goinglLine.frequency * Time.time) / 2.5f;
         var pitch = Mathf.Lerp(previousPitch, converToTone(goinglLine.y), 0.05f);
         audio.pitch = pitch;
+        head.speed = animationSpeed;
+        tentacles.speed = animationSpeed;
         previousPitch = pitch;
         transform.position += new Vector3(0, ypos, 0);
     }

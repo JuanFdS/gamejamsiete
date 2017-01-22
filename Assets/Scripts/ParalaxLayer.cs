@@ -23,12 +23,5 @@ public class ParalaxLayer : MonoBehaviour
 
             firstLayerIndex = nextIndex;
         }
-
-        //if (img.position.x < endX + camera.position.x)
-        //{
-        //    Debug.Log("ENTRO");
-        //    img.position = new Vector3(img.position.x + startX, img.position.y, img.position.z);
-
-        //}
     }
 }
