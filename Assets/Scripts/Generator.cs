@@ -53,7 +53,6 @@ public class Generator : MonoBehaviour
     void Update()
     {
         distanceTravelled += player.DistanceTraveledInFrame();
-        Debug.Log(distanceTravelled);
         if (distanceTravelled > difficulty.metersPerObstacle)
         {
             SpawnObstacle();

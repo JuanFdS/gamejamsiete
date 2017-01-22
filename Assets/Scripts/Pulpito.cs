@@ -9,6 +9,8 @@ public class Pulpito : MonoBehaviour
 
     public int currentLine = 3;
 
+    public float moneyBoostGrant = 10;
+
     public float coolDown = 100;
     public float timeToRecharge = 0.5f;
 
@@ -34,10 +36,11 @@ public class Pulpito : MonoBehaviour
     private Line goinglLine;
     private float previousPitch;
     private AudioSource audio;
-	public bool enLinea = true;
+    public bool enLinea = true;
 
-    public void Start(){
-		goingColor = actualColor;
+    public void Start()
+    {
+        goingColor = actualColor;
         goinglLine = GlobalConfig.Instance.Line(2).line;
         previousPitch = converToTone(goinglLine.y);
         audio = GetComponent<AudioSource>();
@@ -89,10 +92,10 @@ public class Pulpito : MonoBehaviour
             GoToNewLine(estoEsReCabeza);
 
             red = false;
-			yellow = false;
-			blue = false;
-			timeOfFirstKey = 0;
-		}
+            yellow = false;
+            blue = false;
+            timeOfFirstKey = 0;
+        }
 
         if (coolDown == 0)
         {
@@ -168,10 +171,16 @@ public class Pulpito : MonoBehaviour
         {
             case "Obstacle":
                 {
-					SceneManager.LoadScene("GameOver");
+                    SceneManager.LoadScene("GameOver");
+                    break;
+                }
+            case "Coin":
+                {
+                    coolDown += 10;
                     break;
                 }
         }
+        Destroy(collisioner.gameObject);
     }
 
     public float DistanceTraveledInFrame()
@@ -179,19 +188,22 @@ public class Pulpito : MonoBehaviour
         return horizontalSpeed * Time.deltaTime;
     }
 
-    public void Step(){
+    public void Step()
+    {
         stepTime += Mathf.Clamp01(verticalSpeed * Time.deltaTime);
-        transform.position = Vector3.Lerp (lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
-        var color = Color.Lerp(actualColor, goingColor,  stepTime);
+        transform.position = Vector3.Lerp(lastPosition, nextPosition, stepTime); //Mathf.SmoothStep(0.2f, 0.8f, stepTime));
+        var color = Color.Lerp(actualColor, goingColor, stepTime);
         trailMaterial.color = color;
         actualColor = color;
-    stepping = stepTime < 1;
-        if (Vector4.Distance (goingColor, actualColor) < 0.1f && !enLinea) {
+        stepping = stepTime < 1;
+        if (Vector4.Distance(goingColor, actualColor) < 0.1f && !enLinea)
+        {
             //entered a line
             enLinea = true;
         }
-        if (!stepping) {
-            
+        if (!stepping)
+        {
+
         }
     }
 
