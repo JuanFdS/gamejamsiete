@@ -21,7 +21,7 @@ public class HUD : MonoBehaviour
 
 	void Update ()
 	{
-	    counter.text = GlobalConfig.Instance.Distance.ToString("0.00");
+		counter.text = GlobalConfig.Instance.Points().ToString("0.00");
 
 	    powerUpBar.rectTransform.sizeDelta = new Vector2(player.coolDown, powerUpBar.rectTransform.rect.height);
 	    powerUpBar.rectTransform.position = new Vector2(originalPowerUpBarPos.x - (100 - player.coolDown), originalPowerUpBarPos.y);

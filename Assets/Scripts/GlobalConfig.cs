@@ -21,6 +21,10 @@ public class GlobalConfig : MonoBehaviour
     public float Distance
     { get; set; }
 
+	public float Points(){
+		return Distance * 30;
+	}
+
     void Awake()
     {
         if (Instance != null)

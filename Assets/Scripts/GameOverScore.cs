@@ -7,6 +7,6 @@ public class GameOverScore : MonoBehaviour
     
 	void Start ()
 	{
-	    score.text = GlobalConfig.Instance.Distance.ToString("0.00");
+		score.text = GlobalConfig.Instance.Points().ToString("0.00");
     }
 }
