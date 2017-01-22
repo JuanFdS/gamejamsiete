@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class HUD : MonoBehaviour
 {
@@ -10,25 +11,32 @@ public class HUD : MonoBehaviour
 
     public Pulpito player;
 
-    public Image powerUpBar;
+	public Sprite[] powerUpBars;
 
-    private Vector3 originalPowerUpBarPos;
+	public Image imageContainer;
 
     void Start()
     {
-        originalPowerUpBarPos = powerUpBar.rectTransform.position;
     }
 
 	void Update ()
 	{
 		counter.text = GlobalConfig.Instance.Points().ToString("0.00");
 
-	    powerUpBar.rectTransform.sizeDelta = new Vector2(player.coolDown, powerUpBar.rectTransform.rect.height);
-	    powerUpBar.rectTransform.position = new Vector2(originalPowerUpBarPos.x - (100 - player.coolDown), originalPowerUpBarPos.y);
+		var mappedValue = this.CustomMapValue (player.coolDown, 0f, 100f, 0f, 5f);
+
+		var intValue = (int)mappedValue;
+
+		imageContainer.sprite = powerUpBars [intValue];
 
 	    if (Input.GetKeyDown(KeyCode.K))
 	    {
 	        SceneManager.LoadScene(2);
 	    }
     }
+
+	float CustomMapValue(float s, float a1, float a2, float b1, float b2)
+	{
+		return b1 + (s-a1)*(b2-b1)/(a2-a1);
+	}
 }
