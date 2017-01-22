@@ -470,7 +470,7 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9cfb5fe2aa57e8549924f580802d91b4, type: 2}
+  - {fileID: 2100000, guid: 4c0431c79be550b4ebf84382cc0b3e8f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -569,12 +569,17 @@ MonoBehaviour:
   verticalSpeed: 5
   currentLine: 3
   moneyBoostGrant: 10
-  coolDown: 100
+  coolDown: 0
   timeToRecharge: 0.5
-  maxTimeToPressKeys: 0.025
-  trailMaterial: {fileID: 2100000, guid: 9cfb5fe2aa57e8549924f580802d91b4, type: 2}
+  coolSpeed: 5
+  head: {fileID: 95336395621695200}
+  tentacles: {fileID: 95357833668459860}
+  maxTimeToPressKeys: 0.05
+  trailMaterial: {fileID: 2100000, guid: 4c0431c79be550b4ebf84382cc0b3e8f, type: 2}
   actualColor: {r: 0.034482475, g: 0, b: 1, a: 0}
   enLinea: 1
+  commonClip: {fileID: 8300000, guid: fdd28f0742831ce478376c2b9352e1a5, type: 3}
+  metalClip: {fileID: 8300000, guid: 0989ec9a50501476a819c57345ff8717, type: 3}
 --- !u!212 &212071789849770156
 SpriteRenderer:
   m_ObjectHideFlags: 1

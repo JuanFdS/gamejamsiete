@@ -13,6 +13,7 @@ public class Pulpito : MonoBehaviour
 
     public float coolDown = 100;
     public float timeToRecharge = 0.5f;
+    public float coolSpeed = 5f;
 
     public Animator head;
     public Animator tentacles;
@@ -164,8 +165,6 @@ public class Pulpito : MonoBehaviour
 
     public void Update()
     {
-        var coolSpeed = 25;
-
         if (nextPosition.z != 0)
         {
             coolDown -= Time.deltaTime * coolSpeed;
