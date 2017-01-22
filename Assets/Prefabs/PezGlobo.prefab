@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65764677660257146}
   - component: {fileID: 114548024528549242}
   m_Layer: 0
-  m_Name: Obstaculo 2
+  m_Name: PezGlobo
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

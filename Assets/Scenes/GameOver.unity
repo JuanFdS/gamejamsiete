@@ -339,6 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9278fc7b314b0641992c999d2c096e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  howToPlayPopup: {fileID: 0}
+  pulpito: {fileID: 0}
 --- !u!114 &345140694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,7 +965,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ed3743c86e2d20145b9a227581c4a91e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb6e95b3f200fcc4cba2c5050ba68912, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

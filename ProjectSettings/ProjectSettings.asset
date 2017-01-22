@@ -457,7 +457,7 @@ PlayerSettings:
     Collab: 0
     ErrorHub: 0
     Hub: 0
-    UNet: 1
+    UNet: 0
   cloudProjectId: 7d174ad2-6d47-48a4-8f75-62ed97a40cf8
   projectName: Siete
   organizationId: francisco-hart
