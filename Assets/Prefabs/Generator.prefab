@@ -69,13 +69,22 @@ MonoBehaviour:
   - obstaculo: {fileID: 114046857300333780, guid: a21fcf317a375904f9c0ce66321a8b51,
       type: 2}
     spawnPercetange: 40
-  - obstaculo: {fileID: 114478944027742528, guid: 68cae2d00ad774ff8b78fb832c4b9263,
+  - obstaculo: {fileID: 114368984432004276, guid: 5ec830793887b784a8ed1215a93d1d15,
       type: 2}
     spawnPercetange: 80
   - obstaculo: {fileID: 114833232229930298, guid: b6b376445c5ba264c812f8a3d6774555,
       type: 2}
     spawnPercetange: 30
+  - obstaculo: {fileID: 114989229373282080, guid: c465caba280d88646b85eed28f3bf185,
+      type: 2}
+    spawnPercetange: 80
+  - obstaculo: {fileID: 114921239973589928, guid: edffa16a5cf999548b935384bbec126d,
+      type: 2}
+    spawnPercetange: 80
+  - obstaculo: {fileID: 114214854818605794, guid: b91cbc75cfd9445429931c5d20a45f77,
+      type: 2}
+    spawnPercetange: 80000
   minY: -5
   maxY: 5
   offsetX: 20
-  lifeTime: 5
+  lifeTime: 20
