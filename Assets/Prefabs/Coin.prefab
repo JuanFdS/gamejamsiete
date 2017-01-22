@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114833232229930298}
   - component: {fileID: 65551887091972996}
   m_Layer: 0
-  m_Name: Obstaculo
+  m_Name: Coin
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
